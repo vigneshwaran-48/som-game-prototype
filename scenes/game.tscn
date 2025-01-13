@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwa7qird3mx8o"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_rdomd"]
+[ext_resource type="PackedScene" uid="uid://b6yy3es7p1ln5" path="res://scenes/interacation_manager.tscn" id="3_04qfx"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_hv18g"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_jwyvt"]
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_rdomd")
+
+[node name="InteracationManager" parent="." instance=ExtResource("3_04qfx")]
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("4_hv18g")]
+visible = false
+
+[node name="MainCamera" type="Camera3D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="MainCamera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_jwyvt")

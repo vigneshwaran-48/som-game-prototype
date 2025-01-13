@@ -1,0 +1,37 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=9 format=3 uid="uid://b7hbuv31q5vog"]
+
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://ddd1tudcsmvb8" path="res://animations/aim_movement.tres" id="1_t6k75"]
+[ext_resource type="AnimationNodeBlendSpace1D" uid="uid://cokc7obq5u4wo" path="res://animations/basic_movement.tres" id="2_wjiuf"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4xed"]
+animation = &"FallingIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ep16u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v3poy"]
+advance_mode = 2
+advance_expression = "is_falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5xntk"]
+advance_mode = 2
+advance_expression = "!is_falling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fo84n"]
+advance_mode = 2
+advance_expression = "is_aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ge8iq"]
+advance_mode = 2
+advance_expression = "!is_aiming"
+
+[resource]
+states/FallingIdle/node = SubResource("AnimationNodeAnimation_c4xed")
+states/FallingIdle/position = Vector2(733, 112)
+states/Start/position = Vector2(202, 215)
+states/aim_movement/node = ExtResource("1_t6k75")
+states/aim_movement/position = Vector2(464, 68)
+states/basic_movement/node = ExtResource("2_wjiuf")
+states/basic_movement/position = Vector2(449, 198)
+transitions = ["Start", "basic_movement", SubResource("AnimationNodeStateMachineTransition_ep16u"), "aim_movement", "FallingIdle", SubResource("AnimationNodeStateMachineTransition_v3poy"), "FallingIdle", "aim_movement", SubResource("AnimationNodeStateMachineTransition_5xntk"), "basic_movement", "aim_movement", SubResource("AnimationNodeStateMachineTransition_fo84n"), "aim_movement", "basic_movement", SubResource("AnimationNodeStateMachineTransition_ge8iq")]
+graph_offset = Vector2(-3, 19)

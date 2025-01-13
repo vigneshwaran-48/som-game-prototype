@@ -1,0 +1,41 @@
+join vinod center
+vinod: Hey Meera, did you see those pictures from last week? The forest’s turning into a dumping ground. Plastic and garbage everywhere—it’s disgusting. We need to do something about it.
+[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+- I know. It’s horrible. People treat the forest like their personal trash bin.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
+	vinod: Exactly! It’s like they don’t even think about the damage they’re causing. We can’t just sit around and let this keep happening. If we document this mess, maybe we can finally get people to pay attention.
+	# Should Play some animation and camera change for capturing both emotions
+	vinod: You’re good with the camera, right? We could head out this evening, grab some footage, and show them exactly what’s going on.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	meera: Pressing issues? Vinod, this is a pressing issue. It’s not just about the trash—it’s about what it means for the forest, for the wildlife, for us. If we don’t act, who will?
+	# Meera leans forward slightly, resting her elbow on the armrest of her chair as she gestures with her hand to emphasize her point. Her tone is firm but not confrontational, her eyes meeting Vinod’s with conviction.
+- Yeah, but I’m not sure what we can do about it. It feels hopeless sometimes.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
+	vinod: I get that, Meera. It’s overwhelming, and sometimes it feels like we’re just shouting into the void. But if we don’t try, who will? Someone has to take a stand, even if it’s small steps at first.
+	# Should Add a animation like this => "Vinod leans forward, a hint of determination in his voice."
+	vinod: Think about it—if we capture what’s really happening out there, it might wake people up. It’s not just about us; it’s about giving the forest a voice.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	meera: You're right, Vinod. It’s not about us—it's about the bigger picture. The forest deserves to be heard, even if it means we’re the only ones listening for now.
+	# Meera nods slowly, her expression softening as she considers his words. She leans back in her chair, crossing her arms thoughtfully.
+- Let’s not waste time talking about it. If you have a plan, I’m in.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
+	# Should Add a animation like this => "Vinod chuckles lightly, shifting his weight as he stands with a relaxed posture."
+	vinod: Straight to the point, huh? Alright, here’s the plan\: we head to the forest by 6 PM. I’ll bring my camera, and we’ll focus on the areas where the pollution is the worst. Sound good?
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	meera: Sounds good to me, Vinod. I’ll bring my notebook and make sure we get every detail down. If we’re doing this, we might as well get everything we can.
+	# Meera nods in agreement, standing up from her chair and grabbing her bag from the desk. She adjusts her posture, clearly focused and ready for the task ahead.
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerFrontCamera"}"]
+	[signal arg_type="dict" arg="{"action_type":"play_animation","animation_name":"TBH"}"]
+	[wait time="3.0"]
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	meera: Let’s meet at the entrance of the forest around 6. Don’t be late.
+	# She shoots Vinod a playful, challenging smile as she slings her bag over her shoulder.
+- This feels like a waste of time. Shouldn’t we focus on more pressing issues?
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
+	# Should Add a animation like this => "Vinod's smile fades slightly, and he folds his arms across his chest, his tone calm but firm."
+	vinod: I get it, Meera. There’s always something bigger, more urgent. But if we keep ignoring this, it’s only going to get worse. The forest isn’t just a patch of trees—it’s a lifeline for so many people and animals. If we don’t act, who will?
+	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	meera: I know, Vinod. I get it. But sometimes it feels like we’re just putting a band-aid on a bullet wound. The bigger issues need attention too.
+	# Meera pauses, her fingers lightly tapping on the desk as she considers her next words.
+	meera: But you’re right. We can’t ignore this. Let’s do what we can today. If nothing else, maybe it’ll get people talking.
+	# She glances up at Vinod, meeting his gaze with a mix of determination and a slight sigh, her posture softening but still firm on the matter

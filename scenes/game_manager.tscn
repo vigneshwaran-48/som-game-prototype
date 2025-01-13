@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgl57cw4yq81j"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_ufkab"]
+
+[node name="game_manager" type="Node3D"]
+script = ExtResource("1_ufkab")

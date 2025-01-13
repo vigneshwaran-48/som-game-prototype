@@ -1,0 +1,139 @@
+[gd_scene load_steps=14 format=3 uid="uid://st5gp21ju28e"]
+
+[ext_resource type="PackedScene" uid="uid://cd65fid3g04a7" path="res://scenes/office_room.tscn" id="1_afr05"]
+[ext_resource type="Script" path="res://scripts/scenes/scene_1.gd" id="1_avbaj"]
+[ext_resource type="PackedScene" uid="uid://csl25yvk4ybkr" path="res://scenes/player.tscn" id="2_u0lfe"]
+[ext_resource type="PackedScene" uid="uid://b55jq7k5wwcal" path="res://scenes/objects/chair.tscn" id="3_no507"]
+[ext_resource type="PackedScene" uid="uid://oyj2ixu1cga" path="res://scenes/vinod.tscn" id="4_na4m0"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_xbs6e"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_0u0ig"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46scd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_rweri"]
+sky_material = SubResource("ProceduralSkyMaterial_46scd")
+
+[sub_resource type="Environment" id="Environment_i5q2v"]
+background_mode = 2
+sky = SubResource("Sky_rweri")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_vhg28"]
+script = ExtResource("6_0u0ig")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Animation" id="Animation_ve813"]
+resource_name = "scene1_cutscene1"
+length = 6.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 6.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [NodePath("PlayerSideCamera")],
+"method": &"disable_camera"
+}, {
+"args": [NodePath("PlayerFrontCamera")],
+"method": &"disable_camera"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 6.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [NodePath("PlayerFrontCamera")],
+"method": &"enable_camera"
+}, {
+"args": [NodePath("VinodCloseupCamera")],
+"method": &"enable_camera"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["start"],
+"method": &"start_timeline"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8x1ml"]
+_data = {
+"scene1_cutscene1": SubResource("Animation_ve813")
+}
+
+[node name="Scene1" type="Node3D" node_paths=PackedStringArray("scene_animation_player", "player_side_camera", "player_front_camera", "vinod")]
+script = ExtResource("1_avbaj")
+scene_animation_player = NodePath("AnimationPlayer")
+player_side_camera = NodePath("PlayerSideCamera")
+player_front_camera = NodePath("PlayerFrontCamera")
+vinod = NodePath("Vinod")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i5q2v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="office-room" parent="." instance=ExtResource("1_afr05")]
+
+[node name="player" parent="." instance=ExtResource("2_u0lfe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.304, 0, 0.566809)
+
+[node name="Vinod" parent="." instance=ExtResource("4_na4m0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45159, 0, 1.53376)
+
+[node name="Chair-1" parent="." instance=ExtResource("3_no507")]
+transform = Transform3D(0, 0, 0.258992, 0, 0.258992, 0, -0.258992, 0, 0, 0.300474, 0, 0.549747)
+
+[node name="PlayerSideCamera" type="Node3D" parent="."]
+transform = Transform3D(0.443336, -0.302176, 0.843887, 0.0598679, 0.949343, 0.308486, -0.894356, -0.0862419, 0.438967, 1.02743, 1.34167, 0.561781)
+script = ExtResource("5_xbs6e")
+tween_resource = SubResource("Resource_vhg28")
+tween_on_load = false
+
+[node name="PlayerFrontCamera" type="Node3D" parent="."]
+transform = Transform3D(-1, 2.70151e-08, -8.31441e-08, 0, 0.951057, 0.309017, 8.74229e-08, 0.309017, -0.951057, 0.255162, 1.58762, -0.694489)
+script = ExtResource("5_xbs6e")
+tween_resource = SubResource("Resource_vhg28")
+tween_on_load = false
+
+[node name="PlayerLeftSideCamera" type="Node3D" parent="."]
+transform = Transform3D(-0.452008, 0.24194, -0.858577, 0.0401818, 0.967061, 0.251356, 0.891108, 0.0791159, -0.446841, -0.481714, 1.37543, 0.0694703)
+script = ExtResource("5_xbs6e")
+tween_resource = SubResource("Resource_vhg28")
+tween_on_load = false
+
+[node name="VinodCloseupCamera" type="Node3D" parent="."]
+transform = Transform3D(-0.898885, 0.0862099, 0.429623, 0.0669037, 0.995962, -0.0598739, -0.43305, -0.0250764, -0.901022, 0.262523, 1.50128, 0.0598486)
+script = ExtResource("5_xbs6e")
+tween_resource = SubResource("Resource_vhg28")
+tween_on_load = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8x1ml")
+}
