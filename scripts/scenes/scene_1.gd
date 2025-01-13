@@ -71,3 +71,18 @@ func _on_dialogic_signal(argument:Dictionary):
 			
 		target_camera.priority = 20
 		current_camera = target_camera
+	elif argument["action_type"] == "audio":
+		var stream = load(argument["file"])
+		
+		if !stream:
+			print("Unable to audio stream!")
+			return
+			
+		var audio_stream_player: AudioStreamPlayer3D
+		if (argument["target"] == "vinod"):
+			audio_stream_player = vinod.audio_stream_player
+		elif argument["target"] == "meera":
+			audio_stream_player = get_tree().get_first_node_in_group("player").audio_stream_player
+			
+		audio_stream_player.stream = stream
+		audio_stream_player.play()

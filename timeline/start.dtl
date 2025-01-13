@@ -1,8 +1,12 @@
 join vinod center
+[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/vinod_scene1_dialogue1.ogg","target":"vinod"}"]
 vinod: Hey Meera, did you see those pictures from last week? The forest’s turning into a dumping ground. Plastic and garbage everywhere—it’s disgusting. We need to do something about it.
 [signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
 - I know. It’s horrible. People treat the forest like their personal trash bin.
+	[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/meera_scene1_dialogoue1_choice1.ogg","target":"meera"}"]
+	[wait time="6.01"]
 	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
+	[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/vinod_scene1-dialogue1_choice1_reply1.ogg","target":"vinod"}"]
 	vinod: Exactly! It’s like they don’t even think about the damage they’re causing. We can’t just sit around and let this keep happening. If we document this mess, maybe we can finally get people to pay attention.
 	# Should Play some animation and camera change for capturing both emotions
 	vinod: You’re good with the camera, right? We could head out this evening, grab some footage, and show them exactly what’s going on.

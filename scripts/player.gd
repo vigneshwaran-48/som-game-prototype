@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var animation_tree: AnimationTree
 @export var animation_player: AnimationPlayer
 
+@export var audio_stream_player: AudioStreamPlayer3D
+
 @export var sensitivity_horizontal = 0.5
 @export var sensitivity_vertical = 0.2
 @export var walk_speed = 2.0

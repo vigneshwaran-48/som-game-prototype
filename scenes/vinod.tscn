@@ -1057,9 +1057,10 @@ _data = {
 "TPose": SubResource("Animation_7a48e")
 }
 
-[node name="Vinod" type="Node3D" node_paths=PackedStringArray("animation_player")]
+[node name="Vinod" type="Node3D" node_paths=PackedStringArray("animation_player", "audio_stream_player")]
 script = ExtResource("1_37r77")
 animation_player = NodePath("male/AnimationPlayer")
+audio_stream_player = NodePath("AudioStreamPlayer3D")
 
 [node name="male" type="Node3D" parent="."]
 
@@ -1650,3 +1651,5 @@ libraries = {
 "": SubResource("AnimationLibrary_s1ys1"),
 "Male Animations": ExtResource("1_67t3u")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
