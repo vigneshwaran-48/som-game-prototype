@@ -1,16 +1,27 @@
 join vinod center
-[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/vinod_scene1_dialogue1.ogg","target":"vinod"}"]
+[signal arg_type="dict" arg="{"action_type":"animation","animation":"Chair_Scene1_Turn_To_Vinod","target":"chair"}"]
+[signal arg_type="dict" arg="{"action_type":"animation","animation":"Girl Animations/Meera_Scene1_Turn_To_Vinod","target":"meera"}"]
+[signal arg_type="dict" arg="{"action_type":"animation","animation":"Male Animations/Vinod_Scene1_Dialogue1","target":"vinod"}"]
+[voice path="res://audio/vinod_scene1_dialogue1.ogg" volume="0.0"]
 vinod: Hey Meera, did you see those pictures from last week? The forest’s turning into a dumping ground. Plastic and garbage everywhere—it’s disgusting. We need to do something about it.
 [signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+[voice volume="0.0"]
 - I know. It’s horrible. People treat the forest like their personal trash bin.
-	[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/meera_scene1_dialogoue1_choice1.ogg","target":"meera"}"]
-	[wait time="6.01"]
+	[signal arg_type="dict" arg="{"action_type":"animation","animation":"Girl Animations/Meera_Scene1_Sit_Talk","target":"meera"}"]
+	[voice path="res://audio/meera_scene1_dialogoue1_choice1.ogg" volume="0.0"]
+	meera: I know. It’s horrible. People treat the forest like their personal trash bin.
+	[signal arg_type="dict" arg="{"action_type":"animation","animation":"Girl Animations/Meera_Scene1_Sit_Listen","target":"meera"}"]
 	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"VinodCloseupCamera"}"]
-	[signal arg_type="dict" arg="{"action_type":"audio","file":"res://audio/vinod_scene1-dialogue1_choice1_reply1.ogg","target":"vinod"}"]
+	[signal arg_type="dict" arg="{"action_type":"animation","animation":"Male Animations/Vinod_Scene1_Dialogue1","target":"vinod"}"]
+	[voice path="res://audio/vinod_scene1-dialogue1_choice1_reply1.ogg" volume="0.0"]
 	vinod: Exactly! It’s like they don’t even think about the damage they’re causing. We can’t just sit around and let this keep happening. If we document this mess, maybe we can finally get people to pay attention.
 	# Should Play some animation and camera change for capturing both emotions
+	[signal arg_type="dict" arg="{"action_type":"animation","animation":"Male Animations/Vinod_Scene1_Dialogue1","target":"vinod"}"]
+	[voice path="res://audio/vinod_scene1_dialgoue1_choice1_reply2.ogg" volume="0.0"]
 	vinod: You’re good with the camera, right? We could head out this evening, grab some footage, and show them exactly what’s going on.
 	[signal arg_type="dict" arg="{"action_type":"camera_switch","target_camera_path":"PlayerLeftSideCamera"}"]
+	[signal arg_type="dict" arg="{"action_type":"animation","animation":"Girl Animations/Meera_Scene1_Sit_Talk","target":"meera"}"]
+	[voice path="res://audio/meera_scene1_dialogue1_choice1_reply2.ogg" volume="0.0"]
 	meera: Pressing issues? Vinod, this is a pressing issue. It’s not just about the trash—it’s about what it means for the forest, for the wildlife, for us. If we don’t act, who will?
 	# Meera leans forward slightly, resting her elbow on the armrest of her chair as she gestures with her hand to emphasize her point. Her tone is firm but not confrontational, her eyes meeting Vinod’s with conviction.
 - Yeah, but I’m not sure what we can do about it. It feels hopeless sometimes.

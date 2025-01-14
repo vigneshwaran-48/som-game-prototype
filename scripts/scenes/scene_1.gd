@@ -5,6 +5,7 @@ extends Node3D
 @export var player_side_camera: PhantomCamera3D
 @export var player_front_camera: PhantomCamera3D
 @export var vinod: Node3D
+@export var chair_animation_player: AnimationPlayer
 
 #@export var rightHandForearmHint: Node3D
 #@export var leftHandForearmHint: Node3D
@@ -62,8 +63,14 @@ func disable_camera(camera_path: NodePath) -> void:
 func start_timeline(timeline: String) -> void:
 	Dialogic.start(timeline)
 
-
+func change_transform(source: NodePath, target: NodePath) -> void:
+	var source_node: Node3D = get_node(source)
+	var target_node: Node3D = get_node(target)
+	
+	source_node.global_position = target_node.global_position
+	
 func _on_dialogic_signal(argument:Dictionary):
+	var player: Player = get_tree().get_first_node_in_group("player")
 	if argument["action_type"] == "camera_switch":
 		var target_camera: PhantomCamera3D = get_node(argument["target_camera_path"])
 		if current_camera:
@@ -71,7 +78,19 @@ func _on_dialogic_signal(argument:Dictionary):
 			
 		target_camera.priority = 20
 		current_camera = target_camera
+	elif argument["action_type"] == "animation":
+		if (argument["target"] == "vinod"):
+			vinod.animation_player.play(argument["animation"])
+		elif argument["target"] == "chair":
+			chair_animation_player.play(argument["animation"])
+		elif (argument["target"] == "meera"):
+			player.animation_player.play(argument["animation"])
+		else:
+			print("Animation not handled for the given character!")
 	elif argument["action_type"] == "audio":
+		# This action is not used for now because using the dialogic's voice 
+		# feature. This will be useful for playing audio sounds for characters 
+		# that are in longer distance.
 		var stream = load(argument["file"])
 		
 		if !stream:
@@ -82,7 +101,7 @@ func _on_dialogic_signal(argument:Dictionary):
 		if (argument["target"] == "vinod"):
 			audio_stream_player = vinod.audio_stream_player
 		elif argument["target"] == "meera":
-			audio_stream_player = get_tree().get_first_node_in_group("player").audio_stream_player
+			audio_stream_player = player.audio_stream_player
 			
 		audio_stream_player.stream = stream
 		audio_stream_player.play()
